@@ -1,13 +1,45 @@
 print("==== CONTROL DE INVENTARIO DE TIENDA ====")
 print("")
 
-numProductos = int(input("Digita la cantidad de productos a ingresar: "))
+stock = [] 
+codigo = [] 
+precio = [] 
+categoria = [] 
+nombre = []
 
-stock = [numProductos] 
-codigo = [numProductos] 
-precio = [numProductos] 
-categoria = [numProductos] 
-nombre = [numProductos]
+def agregarProducto():
+    numProductos = int(input("Digita la cantidad de productos a ingresar: "))
+
+    for i in range(numProductos):
+        print(f"--- Registro del Producto #{i+1} ---")
+
+        nom = input("Escribe el nombre del producto: ")
+        nombre.append(nom)
+
+        while True:
+            entrada = input("Escribe el codigo del producto (solo numeros): ")
+
+            if entrada.isdigit():
+                codigo.append(int(entrada))
+                break
+            else:
+                print("Error, no puedes ingresar letras, vuelve a intentarlo.")
+
+        cat = input("Ingresa la categoria del producto: ")
+        categoria.append(cat)
+
+        while True:
+            prc = input("Ingresa el precio del producto: ")
+
+            if prc.isdigit():
+                precio.append(int(prc))
+                break
+            else:
+                print("Error, no puedes ingresar letras, vuelve a intentarlo.")
+
+
+
+
 
 while True:
     print("---MENU DE INVENTARIO---")
@@ -20,6 +52,12 @@ while True:
 
     match (opcion):
         case 1:
-            for i in range(1):
-                nombre = str(input("Ingresa el nombre del producto: "))
-    
+            agregarProducto()
+
+        case 5:
+            print("Saliendo del sistema...")
+            break
+
+        case _:
+            print("Opcion no valida, vuelve a intentarlo")
+            print("")
