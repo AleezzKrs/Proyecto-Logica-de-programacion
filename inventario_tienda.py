@@ -36,6 +36,37 @@ def agregarProducto():
                 break
             else:
                 print("Error, no puedes ingresar letras, vuelve a intentarlo.")
+        
+        while True:
+            stk = input("Ingresa el stock del producto: ")
+
+            if stk.isdigit():
+                stock.append(int(stk))
+                break
+            else:
+                print("Error, no puedes ingresar letras, vuelve a intentarlo.")
+
+def buscarProducto():
+    if not codigo:
+        print("El inventario esta vacio")
+        print("")
+        return
+
+    cod = int(input("Ingresa el codigo del producto: "))
+
+    if cod in codigo:
+        indice = codigo.index(cod)
+
+        print("\n---Producto encontrado---")
+        print("Nombre:", nombre[indice])
+        print("Categoria:", categoria[indice])
+        print("Precio:", precio[indice],"$")
+        print("Codigo:", codigo[indice])
+        print("Stock:", stock[indice])
+        print("")
+    else:
+        print("Codigo no encontrado")
+        print("")
 
 
 
@@ -53,6 +84,8 @@ while True:
     match (opcion):
         case 1:
             agregarProducto()
+        case 2:
+            buscarProducto()
 
         case 5:
             print("Saliendo del sistema...")
